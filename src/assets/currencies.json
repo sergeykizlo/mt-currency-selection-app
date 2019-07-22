@@ -1,0 +1,36 @@
+[{
+  "name": "eur",
+  "isSelected": false
+},
+{
+  "name": "pln",
+  "isSelected": false
+},
+{
+  "name": "gel",
+  "isSelected": false
+},
+{
+  "name": "dkk",
+  "isSelected": false
+},
+{
+  "name": "czk",
+  "isSelected": false
+},
+{
+  "name": "gbp",
+  "isSelected": false
+},
+{
+  "name": "sek",
+  "isSelected": false
+},
+{
+  "name": "usd",
+  "isSelected": false
+},
+{
+  "name": "rub",
+  "isSelected": false
+}]
