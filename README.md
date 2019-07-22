@@ -1,4 +1,4 @@
-# currency-selection-app
+# Currency Selection App
 
 > Mintos hometask - create a currency selection component
 
