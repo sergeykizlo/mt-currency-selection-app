@@ -1,36 +1,38 @@
-[{
-  "name": "eur",
-  "isSelected": false
-},
-{
-  "name": "pln",
-  "isSelected": false
-},
-{
-  "name": "gel",
-  "isSelected": false
-},
-{
-  "name": "dkk",
-  "isSelected": false
-},
-{
-  "name": "czk",
-  "isSelected": false
-},
-{
-  "name": "gbp",
-  "isSelected": false
-},
-{
-  "name": "sek",
-  "isSelected": false
-},
-{
-  "name": "usd",
-  "isSelected": false
-},
-{
-  "name": "rub",
-  "isSelected": false
-}]
+[
+  {
+    "name": "eur",
+    "selected": false
+  },
+  {
+    "name": "pln",
+    "selected": false
+  },
+  {
+    "name": "gel",
+    "selected": false
+  },
+  {
+    "name": "dkk",
+    "selected": false
+  },
+  {
+    "name": "czk",
+    "selected": false
+  },
+  {
+    "name": "gbp",
+    "selected": false
+  },
+  {
+    "name": "sek",
+    "selected": false
+  },
+  {
+    "name": "usd",
+    "selected": false
+  },
+  {
+    "name": "rub",
+    "selected": false
+  }
+]

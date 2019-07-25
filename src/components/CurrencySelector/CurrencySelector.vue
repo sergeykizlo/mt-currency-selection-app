@@ -1,19 +1,20 @@
 <template>
   <div class="currency-selector">
-    <div class="currency-selector__items">
-        <currency-selector-item
-          v-for="currency in currencies"
-          :currency="currency"
-          :deselectCurrency="deselectCurrency">
-        </currency-selector-item>
+    <div class="currency-selector__items" v-if="selectedCurrencies.length > 0">
+      <template v-for="currency in selectedCurrencies">
+        <currency-selector-item :key="currency.name"
+                                :name="currency.name"
+                                v-model="currency.selected"
+        />
+      </template>
     </div>
     <div class="currency-selector__checkboxes">
-      <currency-selector-checkbox
-        v-for="currency in currencies"
-        :currency="currency"
-        :selectCurrency="selectCurrency"
-        :deselectCurrency="deselectCurrency">
-      </currency-selector-checkbox>
+      <template v-for="currency in currencies">
+        <currency-selector-checkbox :key="currency.name"
+                                    :name="currency.name"
+                                    v-model="currency.selected"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -24,28 +25,25 @@
   import CurrencySelectorCheckbox from './CurrencySelectorCheckbox';
 
   export default {
-    name: "CurrencySelection",
+    name: "CurrencySelector",
     components: {
-      'currency-selector-item': CurrencySelectorItem,
-      'currency-selector-checkbox': CurrencySelectorCheckbox
+      CurrencySelectorItem,
+      CurrencySelectorCheckbox
     },
-    data: function () {
+    data() {
       return {
         currencies: currencies
       }
     },
-    methods: {
-      selectCurrency(currency) {
-        currency.isSelected = true;
-      },
-      deselectCurrency(currency) {
-        currency.isSelected = false;
-      }
+    computed: {
+        selectedCurrencies() {
+            return this.currencies.filter(currency => currency.selected);
+        }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../styles/colors";
 
   .currency-selector {
@@ -53,9 +51,9 @@
       padding: 16px;
       border: 1px solid $gray;
       border-radius: 4px;
-      box-shadow: 4px 4px 5px 0px $lightGray;
+      box-shadow: 4px 4px 5px 0 $lightGray;
       margin: 16px;
-      font-family: Calibri;
+      font-family: Calibri, sans-serif;
 
       &__items {
           margin-bottom: 32px;

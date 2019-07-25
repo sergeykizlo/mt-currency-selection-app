@@ -1,22 +1,21 @@
 <template>
     <div class="app">
-        <currency-selector></currency-selector>
+        <currency-selector />
     </div>
 </template>
 
 <script>
-  import './styles/reset-styles.scss';
   import CurrencySelector from './components/CurrencySelector/CurrencySelector';
 
   export default {
       components: {
-          'currency-selector': CurrencySelector
+          CurrencySelector,
       }
   }
 </script>
 
 <style lang="scss">
-    div { box-sizing: border-box; }
+    @import './styles/reset-styles.scss';
 
     .app {
         display: flex;

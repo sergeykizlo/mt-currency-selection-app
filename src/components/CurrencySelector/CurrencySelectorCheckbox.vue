@@ -1,29 +1,41 @@
 <template>
-  <div class="cs-checkbox"
-       :class="{ 'cs-checkbox--selected' : currency.isSelected }"
+  <label class="cs-checkbox"
+       :class="componentClass"
   >
     <input type="checkbox"
            name="currency"
-           :id="currency.name"
-           :value="currency.name"
-           :checked="currency.isSelected"
-           @change="currency.isSelected ? deselectCurrency(currency) : selectCurrency(currency)"/>
-    <label :for="currency.name">{{ currency.name }}</label>
-  </div>
+           :id="name"
+           :value="value"
+           :checked="value"
+           @input="onInput"
+    />
+    {{ name }}
+  </label>
 </template>
 
 <script>
   export default {
     name: "CurrencySelectorCheckbox",
     props: {
-      currency: Object,
-      selectCurrency: Function,
-      deselectCurrency: Function,
+      name: String,
+      value: Boolean
+    },
+    computed: {
+      componentClass() {
+        return {
+          'cs-checkbox--selected': this.value,
+        }
+      }
+    },
+    methods: {
+      onInput(event) {
+        this.$emit('input', event.srcElement.checked);
+      }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "../../styles/colors";
 
     .cs-checkbox {
@@ -33,9 +45,15 @@
         padding: 8px;
         border: 1px solid $gray;
         margin: 8px;
+        font-size: 28px;
+        text-transform: uppercase;
+        color: $blue;
         background-color: $lightGray;
+        cursor: pointer;
 
-        &:hover { background-color: $mediumTransparencyGray; }
+        &:hover {
+            background-color: $mediumTransparencyGray;
+        }
 
         &--selected,
         &--selected:hover {
@@ -45,17 +63,17 @@
         input[type="checkbox"] {
             -webkit-appearance: none;
             position: relative;
-            float: left;
-            display: inline-block;
             width: 16px;
             height: 16px;
             border: 1px solid $gray;
             border-radius: 4px;
-            margin: 6px 8px 6px 0;
+            margin: 0 4px 0 0;
 
-            &:focus { outline: none; }
+            &:focus {
+                outline: none;
+            }
 
-            &:checked:after {
+            &:checked::after {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -68,20 +86,6 @@
                 text-align: center;
                 color: $red;
             }
-        }
-
-        label {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: calc(100% - 30px);
-            height: 100%;
-            padding-left: 30px;
-            font-size: 28px;
-            line-height: 44px;
-            text-transform: uppercase;
-            color: $blue;
-            cursor: pointer;
         }
     }
 </style>

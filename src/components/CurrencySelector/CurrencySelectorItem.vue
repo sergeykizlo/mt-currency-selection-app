@@ -1,9 +1,11 @@
 <template>
-  <div class="cs-item"
-       v-if="currency.isSelected === true">
-    {{ currency.name }}
+  <div class="cs-item">
+    {{ name }}
     <div class="cs-item__remove-button"
-         @click="deselectCurrency(currency)">X</div>
+         @click="onRemoveClick"
+    >
+      X
+    </div>
   </div>
 </template>
 
@@ -11,13 +13,18 @@
   export default {
     name: "CurrencySelectorItem",
     props: {
-      currency: Object,
-      deselectCurrency: Function,
+      name: String,
+      value: Boolean
+    },
+    methods: {
+      onRemoveClick() {
+        this.$emit('input', false);
+      }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../styles/colors";
 
   .cs-item {
